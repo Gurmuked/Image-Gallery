@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { FaChevronRight, FaChevronLeft} from "react-icons/fa";
 
 const Lightbox = ({ isOpen, img, onClose, onPrev, onNext, hasPrev, hasNext }) => {
   const overlayRef = useRef(null);
@@ -12,20 +13,13 @@ const Lightbox = ({ isOpen, img, onClose, onPrev, onNext, hasPrev, hasNext }) =>
         if (e.target === overlayRef.current) onClose();
       }}
     >
-      <span
-        className="absolute top-6 right-10 text-white text-4xl cursor-pointer hover:text-red-500"
-        onClick={onClose}
-        aria-label="Close"
-      >
-        &times;
-      </span>
       {hasPrev && (
         <span
           className="absolute left-6 top-1/2 -translate-y-1/2 text-white text-4xl cursor-pointer hover:text-blue-400"
           onClick={onPrev}
           aria-label="Previous"
         >
-          <i className="fas fa-chevron-left"></i>
+          <FaChevronLeft />
         </span>
       )}
       {hasNext && (
@@ -34,24 +28,10 @@ const Lightbox = ({ isOpen, img, onClose, onPrev, onNext, hasPrev, hasNext }) =>
           onClick={onNext}
           aria-label="Next"
         >
-          <i className="fas fa-chevron-right"></i>
+         <FaChevronRight />
         </span>
       )}
-      {/* Overlay click zones for navigation */}
-      {hasPrev && (
-        <div
-          className="absolute left-0 top-0 h-full w-1/3 cursor-pointer z-40"
-          onClick={onPrev}
-          style={{ background: 'transparent' }}
-        />
-      )}
-      {hasNext && (
-        <div
-          className="absolute right-0 top-0 h-full w-1/3 cursor-pointer z-40"
-          onClick={onNext}
-          style={{ background: 'transparent' }}
-        />
-      )}
+      {/* Remove overlay click zones for navigation */}
       <div className="relative flex flex-col items-center justify-center p-0 m-0">
         <img
           src={img.src}
