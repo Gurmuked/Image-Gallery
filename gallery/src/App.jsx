@@ -40,7 +40,7 @@ function App() {
 
   return (
     <div className="max-w-6xl mx-auto p-5">
-      <h1 className="text-4xl font-bold text-center my-8 text-gray-800">Photo Gallery</h1>
+      <h1 className="text-4xl font-bold text-center py-2  text-red-700 bg-green-400 mb-2">Photo Gallery</h1>
       <FilterButtons active={filter} onChange={setFilter} />
       <Gallery images={filteredImages} onZoom={(idx) => setLightboxIdx(idx)} />
       <Lightbox
